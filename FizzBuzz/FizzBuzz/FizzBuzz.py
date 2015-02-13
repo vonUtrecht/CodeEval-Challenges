@@ -11,7 +11,8 @@ def fizzBuzz(div1, div2, maxCount):
             replaced = True
         if not replaced:
             print(n, end='')
-        print(' ', end='')
+        if (n < maxCount + 1): # Don't print trailing space
+            print(' ', end='')
     print()
 
 def main(argv):
@@ -19,7 +20,6 @@ def main(argv):
     with open(fileName) as f:
         lines = [line.rstrip('\n') for line in f]
         for line in lines:
-            print(line)
             values = [int(v) for v in line.split()]
             # Assume the numbers are valid positive (>0) integers but constrain them
             # x in range (1,20), y in range (1,20), n in range (21,100)
@@ -33,7 +33,6 @@ def main(argv):
             if ((n < 21) or (n > 100)):
                 n = 50
             fizzBuzz(x, y, n)
-            print()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
